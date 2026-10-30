@@ -642,6 +642,30 @@ input.oreac-in:placeholder-shown,.ad-l input:placeholder-shown,#sname:placeholde
 .stub-t tr.gross td{background:color-mix(in srgb,#1e5a8a 12%,transparent);font-weight:700}
 .stub-t tr.net td{background:var(--vocab-soft);font-weight:700}
 .ad-l input[type=number]{font-family:var(--font-mono)}
+
+/* Grammar teacher */
+.tch{display:grid;gap:.8rem;border:2px dashed var(--fg);border-radius:10px;padding:.9rem;background:var(--bg)}
+.tch-stage{display:grid;grid-template-columns:9.5rem 1fr;gap:.9rem;align-items:end}
+.tch-fig{width:100%;height:auto;display:block}
+.tch-board{border:3px solid #6b4a2b;border-radius:8px;background:#1f3b2e;color:#f6f1dc;padding:.7rem .9rem;display:grid;gap:.5rem;min-width:0;box-shadow:var(--shadow)}
+.tch-board-top{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#cfe3d6}
+.tch-chalk{font-family:var(--font-display);font-size:clamp(1.2rem,3.4vw,1.7rem);line-height:1.25;min-height:2.6em;letter-spacing:-.01em}
+.tch-chalk mark{background:transparent;color:#ffe57a;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+.tch-chalk s{opacity:.6}
+.tch-say{margin:0;font-size:.95rem;color:#f6f1dc;border-top:1px solid rgba(255,255,255,.2);padding-top:.5rem}
+.tch-say .es{color:#cfe3d6}
+.tch-ctl{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.tch-mouth{transform-origin:100px 92px;transition:transform .12s}
+.tch.talking .tch-mouth{animation:tchTalk .28s infinite alternate}
+@keyframes tchTalk{from{transform:scaleY(1)}to{transform:scaleY(2.6) translateY(-1px)}}
+.tch-arm-r{transform-origin:138px 128px;transition:transform .4s}
+.tch.point .tch-arm-r{transform:rotate(-18deg)}
+.tch-eyes{animation:tchBlink 4s infinite}
+@keyframes tchBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.tch-eyes{transform-origin:100px 76px}
+@media (max-width:520px){.tch-stage{grid-template-columns:1fr}.tch-fig{width:8rem;margin:0 auto}}
+@media (prefers-reduced-motion:reduce){.tch.talking .tch-mouth,.tch-eyes{animation:none}}
+:root[data-theme="dark"] .tch{background:var(--surface)}
 </style>
 <div class="wrap">
   <nav class="rail" id="rail" aria-label="Lesson sections">
@@ -987,6 +1011,37 @@ input.oreac-in:placeholder-shown,.ad-l input:placeholder-shown,#sname:placeholde
   <div class="bell-head" style="margin-bottom:.4rem"><div class="eyebrow" style="color:#c2185b;font-weight:700">Grammar move · 7 minutes <span class="es">Movida de gramática · 7 minutos</span></div><div class="timer"><span id="timer10Text">7:00</span><button id="timer10Btn">Start</button></div></div>
   <p class="gl-note">A pay stub is full of numbers, and a good sentence puts each number to work. Two patterns: <b>number + percent of + noun + singular verb</b> (<i>7.65 percent of every check <u>goes</u> to FICA</i>) and <b>$X of the $Y + was</b> (<i>$18.36 of the $240 <u>was</u> withheld</i>). Say the decimal out loud: <i>seven point six five</i>. Tap a button to build each sentence, then read it aloud.<span class="es">Un talón de pago está lleno de números, y una buena oración pone a trabajar cada número. Dos patrones: <b>número + percent of + sustantivo + verbo en singular</b> (<i>7.65 percent of every check <u>goes</u> to FICA</i>) y <b>$X of the $Y + was</b> (<i>$18.36 of the $240 <u>was</u> withheld</i>). Di el decimal en voz alta: <i>seven point six five</i>. Toca un botón para formar cada oración y luego léela en voz alta.</span></p>
   <section class="item" aria-label="Grammar move" id="grammar">
+    <div class="tch" id="tch">
+      <div class="tch-stage">
+        <svg class="tch-fig" viewBox="0 0 200 260" role="img" aria-label="Ms. Alvarez, the EL specialist, standing beside a chalkboard">
+          <ellipse cx="100" cy="252" rx="60" ry="6" fill="#111418" opacity=".15"/>
+          <g class="tch-arm-l"><path d="M62 128 q-22 30 -16 70" fill="none" stroke="#111418" stroke-width="3"/><path d="M62 128 q-20 30 -14 68" fill="none" stroke="#1e5a8a" stroke-width="14" stroke-linecap="round"/><circle cx="48" cy="200" r="9" fill="#c98b5b" stroke="#111418" stroke-width="3"/></g>
+          <path d="M60 120 q40 -22 80 0 l10 92 q-50 10 -100 0 z" fill="#1e5a8a" stroke="#111418" stroke-width="3"/>
+          <path d="M84 118 l16 22 l16 -22" fill="none" stroke="#fff3a3" stroke-width="4" stroke-linecap="round"/>
+          <path d="M70 212 l60 0 l4 40 l-68 0 z" fill="#111418"/>
+          <g class="tch-arm-r"><path d="M138 128 q46 -6 52 -34" fill="none" stroke="#1e5a8a" stroke-width="14" stroke-linecap="round"/><path d="M138 128 q46 -6 52 -34" fill="none" stroke="#111418" stroke-width="3" opacity=".0"/><circle cx="192" cy="92" r="9" fill="#c98b5b" stroke="#111418" stroke-width="3"/><rect x="186" y="78" width="26" height="6" rx="3" fill="#fff" stroke="#111418" stroke-width="2" transform="rotate(-30 192 92)"/></g>
+          <rect x="88" y="96" width="24" height="26" rx="8" fill="#c98b5b" stroke="#111418" stroke-width="3"/>
+          <circle cx="100" cy="74" r="34" fill="#c98b5b" stroke="#111418" stroke-width="3"/>
+          <path d="M66 70 q4 -40 36 -38 q34 2 34 40 q-8 -16 -22 -18 q-14 8 -36 2 q-8 4 -12 14 z" fill="#2b1b12" stroke="#111418" stroke-width="3"/>
+          <path d="M64 72 q-6 36 10 54" fill="none" stroke="#2b1b12" stroke-width="12" stroke-linecap="round"/><path d="M136 72 q6 36 -10 54" fill="none" stroke="#2b1b12" stroke-width="12" stroke-linecap="round"/>
+          <g class="tch-eyes"><circle cx="88" cy="76" r="3.2" fill="#111418"/><circle cx="112" cy="76" r="3.2" fill="#111418"/></g>
+          <rect x="76" y="68" width="22" height="16" rx="5" fill="none" stroke="#111418" stroke-width="2.5"/><rect x="102" y="68" width="22" height="16" rx="5" fill="none" stroke="#111418" stroke-width="2.5"/><path d="M98 75 l4 0" stroke="#111418" stroke-width="2.5"/>
+          <path class="tch-mouth" d="M90 92 q10 6 20 0" fill="#7a1f1f" stroke="#111418" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="92" cy="123" r="3" fill="#c9a227" stroke="#111418" stroke-width="1.5"/>
+        </svg>
+        <div class="tch-board">
+          <div class="tch-board-top"><span class="tch-name">Ms. Alvarez · EL Specialist</span><span class="tch-step" id="tchStep">Numbers in sentences</span></div>
+          <div class="tch-chalk" id="tchChalk">7.65 percent of every check <mark>goes</mark> to FICA.</div>
+          <p class="tch-say" id="tchSay">Press <b>Teach me</b>. I will talk you through the grammar move in seven short steps; the chalkboard changes as I speak.<span class="es">Pulsa <b>Enséñame</b>. Te explicaré la movida de gramática en siete pasos cortos; el pizarrón cambia mientras hablo.</span></p>
+        </div>
+      </div>
+      <div class="tch-ctl">
+        <button class="btn-primary" id="tchPlay">▶ Teach me <span class="es">Enséñame</span></button>
+        <button id="tchNext">Next step ▸</button>
+        <button id="tchStop" disabled>■ Stop</button>
+        <span class="pill" id="tchProg">Step 0 of 7</span>
+      </div>
+    </div>
     <div class="gm-row" data-pct="7.65" data-saypct="seven point six five" data-sayamt="eighteen dollars and thirty-six cents" data-amt="$18.36" data-total="$240" data-noun="every check" data-to="FICA" data-verb="goes" data-what="was withheld for FICA">
       <p class="gm-pair">1. FICA &nbsp;→&nbsp; 7.65% &nbsp;·&nbsp; $18.36 of $240</p>
       <div class="poll gm-pick"><button data-v="pct">___ percent of ___ goes to ___</button><button data-v="amt">$X of the $Y was ___</button></div>
@@ -1804,6 +1859,43 @@ q5.querySelectorAll('button').forEach(b => b.onclick = () => {
   b.classList.add(b.dataset.ok ? 'correct' : 'wrong'); fb5.innerHTML = FB5[b.dataset.k];
 });
 
+/* Grammar teacher: Ms. Alvarez talks through the move; the chalkboard follows */
+(function(){
+  const box = document.getElementById('tch'), chalk = document.getElementById('tchChalk'), say = document.getElementById('tchSay');
+  const stepEl = document.getElementById('tchStep'), prog = document.getElementById('tchProg');
+  const play = document.getElementById('tchPlay'), nextB = document.getElementById('tchNext'), stop = document.getElementById('tchStop');
+  const STEPS = [
+    {t:'The move', b:'NUMBERS IN SENTENCES', en:'Today\'s grammar move is numbers in sentences. A pay stub is full of numbers. Our job is to make each number do a job in a full sentence.', es:'La movida de hoy: números en oraciones. Un talón de pago está lleno de números. Nuestro trabajo es que cada número haga un trabajo en una oración completa.'},
+    {t:'Pattern 1 · percent of', b:'7.65 percent of every check <mark>goes</mark> to FICA.', en:'Pattern one: a number, then percent of, then a noun. Seven point six five percent of every check goes to FICA. Listen to the verb: goes. The subject is percent. Percent is singular, so the verb is goes, not go.', es:'Patrón uno: un número, luego percent of, luego un sustantivo. El sujeto es percent, singular, así que el verbo es goes, no go.'},
+    {t:'Error hunt', b:'The 7.65 percent <s>go</s> to taxes. → 7.65 percent of the check <mark>goes</mark> to taxes.', en:'Error hunt. The seven point six five percent go to taxes. Do you hear it? Go is wrong, and the sentence is missing of the check. Fix it: seven point six five percent of the check goes to taxes.', es:'Caza el error. Go está mal y falta of the check. La corrección: 7.65 percent of the check goes to taxes.'},
+    {t:'Pattern 2 · $X of the $Y', b:'$18.36 of the $240 <mark>was</mark> withheld.', en:'Pattern two: a dollar amount of the total. Eighteen dollars and thirty-six cents of the two hundred forty dollars was withheld. An amount of money is one thing, so we say was, not were.', es:'Patrón dos: una cantidad de dinero del total. Una cantidad de dinero es una sola cosa, así que decimos was, no were.'},
+    {t:'Say the decimal', b:'7.65 → seven point six five<br>$204.65 → two hundred four dollars and sixty-five cents', en:'Now say the numbers out loud. Seven point six five. Not seven sixty-five. Two hundred four dollars and sixty-five cents. The word point is the decimal, and cents come after and.', es:'Ahora di los números en voz alta. El punto decimal se dice point, y los centavos van después de and.'},
+    {t:'Soften with about', b:'Take-home pay was <mark>about</mark> 85 percent of gross pay.', en:'One more tool. When the number is not exact, add about, almost, or more than. Take-home pay was about eighty-five percent of gross pay. About makes the number honest.', es:'Una herramienta más. Cuando el número no es exacto, agrega about, almost o more than.'},
+    {t:'Your turn', b:'Build 3 sentences below. Then write 2 about <mark>your</mark> pay stub.', en:'Your turn. Build the three sentences below with the buttons. Then, in your notebook, write two sentences about your own pay stub: one with percent of, one with a dollar amount of the total. Underline the verb in each one.', es:'Tu turno. Arma las tres oraciones de abajo con los botones. Luego escribe dos oraciones sobre tu propio talón de pago y subraya el verbo en cada una.'}
+  ];
+  let i = -1, auto = false, myRun = 0;
+  function show(k){
+    i = k; const s = STEPS[k];
+    stepEl.textContent = s.t; chalk.innerHTML = s.b; say.innerHTML = s.en + '<span class="es" lang="es">' + s.es + '</span>';
+    prog.textContent = `Step ${k + 1} of 7`; prog.classList.toggle('ok', k === 6);
+    box.classList.toggle('point', k >= 1 && k <= 5);
+  }
+  function speak(k){
+    show(k); if(!synth){ return; }
+    if(current >= 0){ queue = []; run++; synth.cancel(); finish(); }
+    synth.cancel(); const id = ++myRun;
+    const u = makeUtt(STEPS[k].en); u.rate = Math.min(u.rate, 0.95);
+    u.onstart = () => { if(id === myRun) box.classList.add('talking'); };
+    u.onend = () => { if(id !== myRun) return; box.classList.remove('talking'); if(auto && k < 6) setTimeout(() => { if(id === myRun) speak(k + 1); }, 700); else if(k === 6 || !auto){ if(auto){ auto = false; play.disabled = false; stop.disabled = true; play.innerHTML = '↻ Teach me again <span class="es">Enséñame otra vez</span>'; } } };
+    u.onerror = () => { box.classList.remove('talking'); auto = false; play.disabled = false; stop.disabled = true; };
+    synth.speak(u);
+  }
+  play.onclick = () => { auto = true; play.disabled = true; stop.disabled = false; speak(0); };
+  nextB.onclick = () => { auto = false; play.disabled = false; stop.disabled = false; speak((i + 1) % 7); };
+  stop.onclick = () => { auto = false; myRun++; if(synth) synth.cancel(); box.classList.remove('talking'); play.disabled = false; stop.disabled = true; };
+  window.__tchDone = () => i === 6;
+})();
+
 /* Autograde */
 const results = {1:null, 2:null, 3:null, 4:null, 5:null};   // null = not answered, true/false = graded
 const q1 = document.getElementById('choices');
@@ -1998,7 +2090,7 @@ const STEPS = [
   ['Jots', () => document.querySelectorAll('.jot.ok').length === 3],
   ['Vocabulary', () => window.__vmDone || /All eight|New set!/.test(document.getElementById('vmStatus').textContent) && (window.__vmDone = true)],
   ['My pay stub', () => document.getElementById('adStatus').textContent.startsWith('All 4')],
-  ['Grammar', () => document.querySelectorAll('.gm-row .picked').length === 3],
+  ['Grammar', () => document.querySelectorAll('.gm-row .picked').length === 3 && window.__tchDone && window.__tchDone()],
   ['Test prep', () => Object.values(results).every(v => v !== null)],
   ['Exit ticket', () => exitStats().ok]
 ];
@@ -2039,7 +2131,7 @@ function buildReport(){
   const test = `${n} / 5 (Q1 ${line(1)} Q2 ${line(2)} Q3 ${line(3)} Q4 ${line(4)} Q5 ${line(5)})` + (answered ? ' · ' + RATING.find(x => n >= x.min).name : '');
   const rub = document.getElementById('rubTotal').textContent + ' · ' + ((document.getElementById('rubLevel').textContent.match(/level \d · [A-Za-z ]+/) || ['-'])[0]);
   const prog = document.getElementById('progCount').textContent;
-  const text = [`YOUR FIRST PAYCHECK (MONEY AT 16 · DAY 1) · ${name} · ${new Date().toLocaleString()}`, `Progress: ${prog}`, `Bell ringer: ${bellA}`, `Hook: ${hook}`, `Pay stub puzzle: ${lab}`, `Video checks: ${vid[0]}`, `Stop and jots: ${jots}`, `Vocabulary match: ${vocab}`, `My pay stub: job=${stub[0]} · hours=${stub[1]} · rate=${stub[2]} · gross/fed/FICA/state/net=${stubOut}`, `Grammar: ${gram}`, `Test prep: ${test}`, `Writing rubric: ${rub}`, `Exit ticket: ${document.getElementById('exitText').value.trim() || '-'}`].join('\n');
+  const text = [`YOUR FIRST PAYCHECK (MONEY AT 16 · DAY 1) · ${name} · ${new Date().toLocaleString()}`, `Progress: ${prog}`, `Bell ringer: ${bellA}`, `Hook: ${hook}`, `Pay stub puzzle: ${lab}`, `Video checks: ${vid[0]}`, `Stop and jots: ${jots}`, `Vocabulary match: ${vocab}`, `My pay stub: job=${stub[0]} · hours=${stub[1]} · rate=${stub[2]} · gross/fed/FICA/state/net=${stubOut}`, `Grammar: ${gram} · teacher steps: ${document.getElementById('tchProg').textContent}`, `Test prep: ${test}`, `Writing rubric: ${rub}`, `Exit ticket: ${document.getElementById('exitText').value.trim() || '-'}`].join('\n');
   document.getElementById('report').value = text;
   return text;
 }

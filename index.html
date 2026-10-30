@@ -666,6 +666,27 @@ input.oreac-in:placeholder-shown,.ad-l input:placeholder-shown,#sname:placeholde
 @media (max-width:520px){.tch-stage{grid-template-columns:1fr}.tch-fig{width:8rem;margin:0 auto}}
 @media (prefers-reduced-motion:reduce){.tch.talking .tch-mouth,.tch-eyes{animation:none}}
 :root[data-theme="dark"] .tch{background:var(--surface)}
+
+/* Graph teacher */
+.tch-graph{width:100%;height:auto;display:block;background:#1f3b2e;font-family:var(--font-ui)}
+.g-title{fill:#f6f1dc;font-size:14px;font-weight:700}
+.g-ticks line{stroke:rgba(246,241,220,.25);stroke-width:1}
+.g-ticks text{fill:#cfe3d6;font-size:11px;text-anchor:end;font-family:var(--font-mono)}
+.g-axis line{stroke:#f6f1dc;stroke-width:2}
+.g-axis text{fill:#f6f1dc;font-size:12px;font-weight:600}
+.g-bars rect{fill:#7fb6e8;stroke:#111418;stroke-width:2}
+#g-bar-fica{fill:#ffb347}
+.g-val{fill:#f6f1dc;font-size:12px;font-weight:700;text-anchor:middle;font-family:var(--font-mono);opacity:0}
+.g-guide{stroke:#ffe57a;stroke-width:2;stroke-dasharray:6 5;opacity:0}
+.g-finger{fill:#ffe57a;stroke:#111418;stroke-width:2;opacity:0}
+.tch-graph .hl{filter:drop-shadow(0 0 6px #ffe57a)}
+.tch-graph text.hl,.tch-graph .hl text{fill:#ffe57a}
+.tch-graph line.hl,.tch-graph .hl line{stroke:#ffe57a;stroke-width:3}
+.tch-graph rect.hl{stroke:#ffe57a;stroke-width:4}
+.tch-graph .g-val.hl,.tch-graph .g-val.show{opacity:1}
+.tch-graph .g-guide.show,.tch-graph .g-finger.show{opacity:1}
+.tch-graph .dim{opacity:.25}
+.tch-graph *{transition:opacity .3s}
 </style>
 <div class="wrap">
   <nav class="rail" id="rail" aria-label="Lesson sections">
@@ -1065,10 +1086,64 @@ input.oreac-in:placeholder-shown,.ad-l input:placeholder-shown,#sname:placeholde
     <p class="gl-note" style="margin:0;flex:1 1 16rem">Five ELPA21-style questions in 15 minutes. Your answers are graded automatically on this page; show your score to your teacher.<span class="es">Cinco preguntas al estilo ELPA21 en 15 minutos. Tus respuestas se califican automáticamente en esta página; muestra tu puntuación a tu maestro.</span></p>
     <div class="timer"><span id="timer6Text">15:00</span><button id="timer6Btn">Start</button></div>
   </div>
+  <h2 class="c-orange">Mini-lesson · How to read a graph <span class="es">Minilección · Cómo leer una gráfica</span></h2>
+  <section class="item" aria-label="How to read a graph" id="s-graph">
+    <div class="tch tch2" id="tch2">
+      <div class="tch-stage">
+        <svg class="tch-fig" viewBox="0 0 200 260" role="img" aria-label="Mr. Castillo, the EL specialist, pointing at a bar graph">
+          <ellipse cx="100" cy="252" rx="60" ry="6" fill="#111418" opacity=".15"/>
+          <g><path d="M62 128 q-22 30 -16 70" fill="none" stroke="#2e7d4f" stroke-width="14" stroke-linecap="round"/><circle cx="48" cy="200" r="9" fill="#8d5a3c" stroke="#111418" stroke-width="3"/></g>
+          <path d="M60 120 q40 -22 80 0 l10 92 q-50 10 -100 0 z" fill="#2e7d4f" stroke="#111418" stroke-width="3"/>
+          <path d="M84 118 l16 30 l16 -30" fill="#fff" stroke="#111418" stroke-width="3"/><path d="M100 148 l0 50" stroke="#c9a227" stroke-width="5"/>
+          <path d="M70 212 l60 0 l4 40 l-68 0 z" fill="#2b2f3a"/>
+          <g class="tch-arm-r"><path d="M138 128 q46 -6 52 -34" fill="none" stroke="#2e7d4f" stroke-width="14" stroke-linecap="round"/><circle cx="192" cy="92" r="9" fill="#8d5a3c" stroke="#111418" stroke-width="3"/><path d="M198 86 l14 -16" stroke="#111418" stroke-width="4" stroke-linecap="round"/></g>
+          <rect x="88" y="96" width="24" height="26" rx="8" fill="#8d5a3c" stroke="#111418" stroke-width="3"/>
+          <circle cx="100" cy="74" r="34" fill="#8d5a3c" stroke="#111418" stroke-width="3"/>
+          <path d="M68 62 q6 -30 32 -30 q28 0 32 30 q-14 -10 -32 -8 q-18 -2 -32 8 z" fill="#111418"/>
+          <path d="M78 92 q22 24 44 0 q-4 18 -22 20 q-18 -2 -22 -20 z" fill="#2b1b12" stroke="#111418" stroke-width="2"/>
+          <g class="tch-eyes"><circle cx="88" cy="76" r="3.2" fill="#111418"/><circle cx="112" cy="76" r="3.2" fill="#111418"/></g>
+          <path d="M80 68 q8 -5 16 0" fill="none" stroke="#111418" stroke-width="2.5"/><path d="M104 68 q8 -5 16 0" fill="none" stroke="#111418" stroke-width="2.5"/>
+          <path class="tch-mouth" d="M90 94 q10 5 20 0" fill="#7a1f1f" stroke="#111418" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+        <div class="tch-board">
+          <div class="tch-board-top"><span class="tch-name">Mr. Castillo · EL Specialist</span><span class="tch-step" id="tch2Step">Reading a bar graph</span></div>
+          <svg class="tch-graph" id="tch2Graph" viewBox="0 0 420 250" role="img" aria-label="Bar graph. Deductions on J. Reyes's pay stub, in dollars: federal income tax 11.04, FICA 21.11, state income tax 8.50.">
+            <text id="g-title" class="g-title" x="210" y="22" text-anchor="middle">Deductions on J. Reyes's pay stub (dollars)</text>
+            <g id="g-ticks" class="g-ticks">
+              <line x1="70" y1="210" x2="400" y2="210"/><text x="62" y="214">0</text>
+              <line x1="70" y1="176" x2="400" y2="176"/><text x="62" y="180">5</text>
+              <line x1="70" y1="142" x2="400" y2="142"/><text x="62" y="146">10</text>
+              <line x1="70" y1="108" x2="400" y2="108"/><text x="62" y="112">15</text>
+              <line x1="70" y1="74" x2="400" y2="74"/><text x="62" y="78">20</text>
+              <line x1="70" y1="40" x2="400" y2="40"/><text x="62" y="44">25</text>
+            </g>
+            <g id="g-yaxis" class="g-axis"><line x1="70" y1="36" x2="70" y2="210"/><text transform="rotate(-90) translate(-123 20)" text-anchor="middle">Dollars</text></g>
+            <g id="g-xaxis" class="g-axis"><line x1="70" y1="210" x2="400" y2="210"/><text x="125" y="232" text-anchor="middle">Federal tax</text><text x="235" y="232" text-anchor="middle">FICA</text><text x="345" y="232" text-anchor="middle">State tax</text></g>
+            <g class="g-bars">
+              <rect id="g-bar-fed" x="100" y="134.9" width="50" height="75.1"/><text id="g-val-fed" class="g-val" x="125" y="128">$11.04</text>
+              <rect id="g-bar-fica" x="210" y="66.5" width="50" height="143.5"/><text id="g-val-fica" class="g-val" x="235" y="60">$21.11</text>
+              <rect id="g-bar-state" x="320" y="152.2" width="50" height="57.8"/><text id="g-val-state" class="g-val" x="345" y="146">$8.50</text>
+            </g>
+            <line id="g-guide" class="g-guide" x1="70" y1="66.5" x2="260" y2="66.5"/>
+            <circle id="g-finger" class="g-finger" cx="235" cy="66.5" r="7"/>
+          </svg>
+          <p class="tch-say" id="tch2Say">Press <b>Teach me</b>. In seven steps I will show you how to read a bar graph the way the ELPA21 test expects, then you use it on Test prep 1.<span class="es">Pulsa <b>Enséñame</b>. En siete pasos te muestro cómo leer una gráfica de barras como lo pide ELPA21, y luego la usas en la Preparación 1.</span></p>
+        </div>
+      </div>
+      <div class="tch-ctl">
+        <button class="btn-primary" id="tch2Play">▶ Teach me <span class="es">Enséñame</span></button>
+        <button id="tch2Next">Next step ▸</button>
+        <button id="tch2Stop" disabled>■ Stop</button>
+        <span class="pill" id="tch2Prog">Step 0 of 7</span>
+      </div>
+    </div>
+    <p class="item-ext"><span class="todo-tag">NOTEBOOK</span><b>Graph move (copy it):</b> <i>Title → axes → scale → one bar → compare → exact number from the text.</i> Write it in your notebook; you will use it on every graph question this year.<span class="es"><b>Movida de gráfica (cópiala):</b> «Title → axes → scale → one bar → compare → exact number from the text». Escríbela en tu cuaderno; la usarás en cada pregunta con gráfica este año.</span></p>
+  </section>
+
   <h2 class="c-orange">Test prep 1 · Reading a pay stub <span class="es">Preparación 1 · Leer un talón de pago</span></h2>
   <p class="gl-note">These five items are written in the style of ELPA21 questions. You get <b>one answer</b> per question, so think before you tap. Read for Details: put your finger on the line that proves your answer.<span class="es">Tienes <b>una sola respuesta</b> por pregunta, así que piensa antes de tocar. Leer para encontrar detalles: pon el dedo en la línea que prueba tu respuesta. Las opciones de respuesta están en inglés, como en el examen real.</span></p>
   <section class="item" aria-label="Practice question">
-    <p class="item-dir"><b>Directions:</b> Look at the sample pay stub for J. Reyes. Then answer the question.<span class="es"><b>Instrucciones:</b> Mira el talón de pago de J. Reyes. Luego responde la pregunta.</span></p>
+    <p class="item-dir"><b>Directions:</b> Use the bar graph in the mini-lesson above <u>and</u> the sample pay stub for J. Reyes below. Then answer the question.<span class="es"><b>Instrucciones:</b> Usa la gráfica de barras de la minilección de arriba <u>y</u> el talón de pago de J. Reyes de abajo. Luego responde la pregunta.</span></p>
     <figure class="chart" data-say="Sample pay stub. Line 1, Employee: J. Reyes. Line 2, Pay period: October 12 to 25. Line 3, Hours: 24. Line 4, Rate: $11.50 per hour. Line 5, Gross pay: $276.00. Line 6, Federal income tax: $11.04. Line 7, FICA: $21.11. Line 8, State income tax: $8.50. Line 9, Net pay: $235.35. Line 10, Pay date: October 30.">
       <figcaption>Sample pay stub · J. Reyes</figcaption>
       <table class="stub-t" aria-label="Sample pay stub with ten numbered lines">
@@ -1087,7 +1162,7 @@ input.oreac-in:placeholder-shown,.ad-l input:placeholder-shown,#sname:placeholde
       </table>
       <p class="chart-note">Sample pay stub for practice. Line numbers are there so you can name your proof line.</p>
     </figure>
-    <p class="item-q"><b>Question:</b> Which deduction on this pay stub was the <u>largest</u>?<span class="es"><b>Pregunta:</b> ¿Qué deducción de este talón de pago fue la <u>más grande</u>?</span></p>
+    <p class="item-q"><b>Question:</b> Which deduction was the <u>largest</u>? The tallest bar tells you which one; the pay stub tells you the exact amount.<span class="es"><b>Pregunta:</b> ¿Qué deducción fue la <u>más grande</u>? La barra más alta te dice cuál; el talón de pago te da la cantidad exacta.</span></p>
     <div class="hear"><button type="button" class="hear-q" data-q="1">🔊 Hear the question <span class="es">Oír la pregunta</span></button><button type="button" class="hear-c" data-q="1">🔊 Hear the choices <span class="es">Oír las opciones</span></button></div>
     <div class="choices" id="choices" role="group" aria-label="Answer choices">
       <button data-k="A"><span class="letter">A</span> Federal income tax</button>
@@ -1896,6 +1971,48 @@ q5.querySelectorAll('button').forEach(b => b.onclick = () => {
   window.__tchDone = () => i === 6;
 })();
 
+/* Graph teacher: Mr. Castillo reads a bar graph step by step */
+(function(){
+  const box = document.getElementById('tch2'), g = document.getElementById('tch2Graph'), say = document.getElementById('tch2Say');
+  const stepEl = document.getElementById('tch2Step'), prog = document.getElementById('tch2Prog');
+  const play = document.getElementById('tch2Play'), nextB = document.getElementById('tch2Next'), stop = document.getElementById('tch2Stop');
+  const STEPS = [
+    {t:'1 · Title', hl:['g-title'], en:'Step one: read the title first. The title tells you what the graph is about. This graph shows the deductions on J. Reyes\'s pay stub, in dollars. Now I know every bar is money taken out of one paycheck.', es:'Paso uno: lee el título primero. El título dice de qué trata la gráfica. Esta muestra las deducciones del talón de pago de J. Reyes, en dólares.'},
+    {t:'2 · Axes', hl:['g-xaxis','g-yaxis'], en:'Step two: find the two axes. The bottom axis names the categories: federal tax, FICA, state tax. The left axis measures dollars. Categories across, numbers up.', es:'Paso dos: encuentra los dos ejes. El eje de abajo nombra las categorías; el eje izquierdo mide dólares. Categorías a lo ancho, números hacia arriba.'},
+    {t:'3 · Scale', hl:['g-ticks'], en:'Step three: read the scale. Look at the numbers on the left: zero, five, ten, fifteen, twenty, twenty-five. Each line is five dollars. If you skip this step, you will read every bar wrong.', es:'Paso tres: lee la escala. Cada línea vale cinco dólares. Si te saltas este paso, leerás mal todas las barras.'},
+    {t:'4 · One bar', hl:['g-bar-fica'], show:['g-guide','g-finger'], en:'Step four: read one bar. Put your finger on the top of the FICA bar. Slide left to the axis. It is a little above twenty. So FICA is about twenty-one dollars.', es:'Paso cuatro: lee una barra. Pon el dedo en la parte de arriba de la barra de FICA y deslízalo a la izquierda hasta el eje. Está un poco arriba de veinte: unos veintiún dólares.'},
+    {t:'5 · Compare', hl:['g-bar-fica','g-bar-fed','g-bar-state'], en:'Step five: compare the bars. Tallest bar, biggest deduction: FICA. Shortest bar, smallest deduction: state tax. Questions love the words most, least, larger, and smaller. Those are comparing words; answer them with bar heights.', es:'Paso cinco: compara las barras. La más alta es la deducción más grande: FICA. La más baja es la más pequeña: el impuesto estatal. Las preguntas usan most, least, larger, smaller: responde con la altura de las barras.'},
+    {t:'6 · Exact number', hl:['g-val-fica'], vals:true, en:'Step six: a graph gives you about; the text gives you exactly. The bar says about twenty-one. The pay stub, line seven, says twenty-one dollars and eleven cents. Use the graph to compare and the text for the exact number.', es:'Paso seis: la gráfica da un aproximado; el texto da el número exacto. La barra dice unos veintiuno; el talón, línea siete, dice $21.11. Usa la gráfica para comparar y el texto para el número exacto.'},
+    {t:'7 · Your turn', hl:[], vals:true, en:'Your turn. Test prep 1 asks which deduction was the largest. Find the tallest bar, then find its exact amount on the pay stub, and write your proof line in your notebook.', es:'Tu turno. La Preparación 1 pregunta qué deducción fue la más grande. Busca la barra más alta, luego su cantidad exacta en el talón, y escribe tu línea de prueba en tu cuaderno.'}
+  ];
+  let i = -1, auto = false, myRun = 0;
+  function show(k){
+    i = k; const s = STEPS[k];
+    stepEl.textContent = s.t; prog.textContent = `Step ${k + 1} of 7`; prog.classList.toggle('ok', k === 6);
+    say.innerHTML = s.en + '<span class="es" lang="es">' + s.es + '</span>';
+    g.querySelectorAll('.hl, .show, .dim').forEach(x => x.classList.remove('hl', 'show', 'dim'));
+    s.hl.forEach(id => g.getElementById(id).classList.add('hl'));
+    (s.show || []).forEach(id => g.getElementById(id).classList.add('show'));
+    if(s.vals) g.querySelectorAll('.g-val').forEach(v => v.classList.add('show'));
+    if(k === 3){ ['g-bar-fed','g-bar-state'].forEach(id => g.getElementById(id).classList.add('dim')); }
+    box.classList.toggle('point', k >= 0 && k <= 5);
+  }
+  function speak(k){
+    show(k); if(!synth) return;
+    if(current >= 0){ queue = []; run++; synth.cancel(); finish(); }
+    synth.cancel(); const id = ++myRun;
+    const u = makeUtt(STEPS[k].en); u.rate = Math.min(u.rate, 0.95);
+    u.onstart = () => { if(id === myRun) box.classList.add('talking'); };
+    u.onend = () => { if(id !== myRun) return; box.classList.remove('talking'); if(auto && k < 6) setTimeout(() => { if(id === myRun) speak(k + 1); }, 700); else if(auto){ auto = false; play.disabled = false; stop.disabled = true; play.innerHTML = '↻ Teach me again <span class="es">Enséñame otra vez</span>'; } };
+    u.onerror = () => { box.classList.remove('talking'); auto = false; play.disabled = false; stop.disabled = true; };
+    synth.speak(u);
+  }
+  play.onclick = () => { auto = true; play.disabled = true; stop.disabled = false; speak(0); };
+  nextB.onclick = () => { auto = false; play.disabled = false; stop.disabled = false; speak((i + 1) % 7); };
+  stop.onclick = () => { auto = false; myRun++; if(synth) synth.cancel(); box.classList.remove('talking'); play.disabled = false; stop.disabled = true; };
+  window.__tch2Done = () => i === 6;
+})();
+
 /* Autograde */
 const results = {1:null, 2:null, 3:null, 4:null, 5:null};   // null = not answered, true/false = graded
 const q1 = document.getElementById('choices');
@@ -2091,7 +2208,7 @@ const STEPS = [
   ['Vocabulary', () => window.__vmDone || /All eight|New set!/.test(document.getElementById('vmStatus').textContent) && (window.__vmDone = true)],
   ['My pay stub', () => document.getElementById('adStatus').textContent.startsWith('All 4')],
   ['Grammar', () => document.querySelectorAll('.gm-row .picked').length === 3 && window.__tchDone && window.__tchDone()],
-  ['Test prep', () => Object.values(results).every(v => v !== null)],
+  ['Test prep', () => Object.values(results).every(v => v !== null) && window.__tch2Done && window.__tch2Done()],
   ['Exit ticket', () => exitStats().ok]
 ];
 const stepsEl = document.getElementById('progSteps');
@@ -2131,7 +2248,7 @@ function buildReport(){
   const test = `${n} / 5 (Q1 ${line(1)} Q2 ${line(2)} Q3 ${line(3)} Q4 ${line(4)} Q5 ${line(5)})` + (answered ? ' · ' + RATING.find(x => n >= x.min).name : '');
   const rub = document.getElementById('rubTotal').textContent + ' · ' + ((document.getElementById('rubLevel').textContent.match(/level \d · [A-Za-z ]+/) || ['-'])[0]);
   const prog = document.getElementById('progCount').textContent;
-  const text = [`YOUR FIRST PAYCHECK (MONEY AT 16 · DAY 1) · ${name} · ${new Date().toLocaleString()}`, `Progress: ${prog}`, `Bell ringer: ${bellA}`, `Hook: ${hook}`, `Pay stub puzzle: ${lab}`, `Video checks: ${vid[0]}`, `Stop and jots: ${jots}`, `Vocabulary match: ${vocab}`, `My pay stub: job=${stub[0]} · hours=${stub[1]} · rate=${stub[2]} · gross/fed/FICA/state/net=${stubOut}`, `Grammar: ${gram} · teacher steps: ${document.getElementById('tchProg').textContent}`, `Test prep: ${test}`, `Writing rubric: ${rub}`, `Exit ticket: ${document.getElementById('exitText').value.trim() || '-'}`].join('\n');
+  const text = [`YOUR FIRST PAYCHECK (MONEY AT 16 · DAY 1) · ${name} · ${new Date().toLocaleString()}`, `Progress: ${prog}`, `Bell ringer: ${bellA}`, `Hook: ${hook}`, `Pay stub puzzle: ${lab}`, `Video checks: ${vid[0]}`, `Stop and jots: ${jots}`, `Vocabulary match: ${vocab}`, `My pay stub: job=${stub[0]} · hours=${stub[1]} · rate=${stub[2]} · gross/fed/FICA/state/net=${stubOut}`, `Grammar: ${gram} · teacher steps: ${document.getElementById('tchProg').textContent}`, `Test prep: ${test} · graph lesson: ${document.getElementById('tch2Prog').textContent}`, `Writing rubric: ${rub}`, `Exit ticket: ${document.getElementById('exitText').value.trim() || '-'}`].join('\n');
   document.getElementById('report').value = text;
   return text;
 }
